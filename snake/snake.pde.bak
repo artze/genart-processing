@@ -1,0 +1,76 @@
+class Snake {
+  PVector location;
+  PVector velocity;
+  PVector acceleration;
+  float distortStart;
+  float distortEnd;
+  float yPos;
+  float xOff;
+
+  Snake(float yPos_, float distortStart_, float distortEnd_) {
+    yPos = yPos_;
+    location = new PVector(0, yPos);
+    velocity = new PVector(1, 0);
+    xOff = 0;
+    distortStart = distortStart_;
+    distortEnd = distortEnd_;
+  }
+
+  void distort() {
+    // PVector rand = new PVector(location.x + 20, map(noise(xOff), 0, 1, 0, 800));
+    PVector rand = new PVector(location.x + 80, random(0, 800));
+    PVector distortDir = PVector.sub(rand, location);
+    distortDir.normalize();
+
+    acceleration = distortDir;
+    acceleration.mult(10);
+
+    velocity.add(acceleration);
+    velocity.limit(10);
+
+    // xOff++;
+  }
+
+  void recover() {
+    PVector recover = new PVector(location.x + 2, yPos);
+    PVector recoverDir = PVector.sub(recover, location);
+    velocity.add(recoverDir);
+    velocity.limit(3);
+  }
+
+  void update() {
+    if (location.x > distortStart && location.x < distortEnd) { 
+      if (random(1) > 0.9) {
+        distort();
+      } else {
+        recover();
+      }
+    } else {
+      recover();
+    }
+    location.add(velocity);
+    checkEdges();
+  }
+
+  void checkEdges() {
+    if (location.x > width) {
+      location.x = 0;
+    } 
+  }
+
+  void draw() {
+    point(location.x, location.y);
+  }
+}
+
+Snake s;
+void setup() {
+  size(800, 800);
+  background(#faedcd);
+  s = new Snake(height / 2, 200, 600);
+}
+
+void draw() {
+  s.update();
+  s.draw();
+}
