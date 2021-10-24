@@ -12,10 +12,10 @@ class GOL {
   }
 
   int getCellValue(int col, int row) {
-    int margin = 9;
-    int numRepeat = 32;
+    int margin = 12;
+    int numRepeat = 12;
 
-    for (int i = 0; i < numRepeat / 2; i++) {
+    for (int i = 0; i < numRepeat; i++) {
       for (int j = 0; j < numRepeat; j++) {
         if (j % 2 == 0 && i % 2 == 0) {
           continue;
@@ -24,56 +24,36 @@ class GOL {
           continue;
         }
         if ((
-          col == 5 + (margin * i) ||
-          col == 6 + (margin * i) ||
-          col == 7 + (margin * i) ||
-          col == 8 + (margin * i) ||
-          col == 12 + (margin * i) ||
-          col == 15 + (margin * i) ||
-          col == 16 + (margin * i)
+          col == 1 + (margin * i)
+        )
+        && row == 1 + (margin * j)) {
+          return 1;
+        }
+        if ((
+          col == 1 + (margin * i) ||
+          col == 2 + (margin * i)
         )
         && row == 2 + (margin * j)) {
           return 1;
         }
         if ((
-          col == 6 + (margin * i) ||
-          col == 8 + (margin * i) ||
-          col == 9 + (margin * i) ||
-          col == 12 + (margin * i) ||
-          col == 13 + (margin * i) ||
-          col == 14 + (margin * i) ||
-          col == 16 + (margin * i)
+          col == 2 + (margin * i) ||
+          col == 3 + (margin * i)
+        )
+        && row == 3 + (margin * j)) {
+          return 1;
+        }
+        if ((
+          col == 3 + (margin * i) ||
+          col == 4 + (margin * i)
         )
         && row == 4 + (margin * j)) {
           return 1;
         }
         if ((
-          col == 5 + (margin * i) ||
-          col == 9 + (margin * i) ||
-          col == 10 + (margin * i)
+          col == 4 + (margin * i)
         )
         && row == 5 + (margin * j)) {
-          return 1;
-        }
-        if ((
-          col == 2 + (margin * i) ||
-          col == 3 + (margin * i) ||
-          col == 6 + (margin * i) ||
-          col == 8 + (margin * i)
-        )
-        && row == 6 + (margin * j)) {
-          return 1;
-        }
-        if ((
-          col == 1 + (margin * i)
-        )
-        && row == 7 + (margin * j)) {
-          return 1;
-        }
-        if ((
-          col == 5 + (margin * i)
-        )
-        && row == 8 + (margin * j)) {
           return 1;
         }
       }

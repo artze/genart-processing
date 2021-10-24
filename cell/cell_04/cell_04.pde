@@ -9,7 +9,7 @@ void settings() {
 
 void setup() {
   gol = new GOL(totalCols, totalRows);
-  frameRate(15);
+  frameRate(8);
 }
 
 void draw() {
