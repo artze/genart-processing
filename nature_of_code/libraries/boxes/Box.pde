@@ -13,8 +13,8 @@ class Box {
     bd.position.set(box2d.coordPixelsToWorld(x, y));
     bd.setType(BodyType.DYNAMIC);
     body = box2d.createBody(bd);
-    body.setLinearVelocity(new Vec2(random(-1.8, 1.8), random(-1.8, 1.8)));
-    body.setAngularVelocity(random(-1.8, 1.8));
+    body.setLinearVelocity(new Vec2(random(-2.8, 2.8), random(-2.8, 2.8)));
+    body.setAngularVelocity(random(-0.8, 0.8));
 
     PolygonShape ps = new PolygonShape();
     float box2dW = box2d.scalarPixelsToWorld(w / 2);
