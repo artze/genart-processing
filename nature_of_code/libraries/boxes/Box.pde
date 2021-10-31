@@ -6,14 +6,14 @@ class Box {
   float w, h;
   Body body;
   Box(float x, float y) {
-    w = 12;
-    h = 16;
+    w = random(2, 18);
+    h = random(4, 24);
 
     BodyDef bd = new BodyDef();
     bd.position.set(box2d.coordPixelsToWorld(x, y));
     bd.setType(BodyType.DYNAMIC);
     body = box2d.createBody(bd);
-    body.setLinearVelocity(new Vec2(random(-2.8, 2.8), random(-2.8, 2.8)));
+    body.setLinearVelocity(new Vec2(random(-3, 3), random(-3, 3)));
     body.setAngularVelocity(random(-0.8, 0.8));
 
     PolygonShape ps = new PolygonShape();
@@ -23,9 +23,9 @@ class Box {
 
     FixtureDef fd = new FixtureDef();
     fd.shape = ps;
-    fd.friction = 0.3;
+    fd.friction = 10;
     fd.density = 1;
-    fd.restitution = 0.8;
+    fd.restitution = 0.6;
 
     body.createFixture(fd);
   }
@@ -39,6 +39,7 @@ class Box {
     rotate(-angle);
     rectMode(CENTER);
     strokeWeight(2);
+    stroke(255);
     rect(0, 0, w, h);
     popMatrix();
   }

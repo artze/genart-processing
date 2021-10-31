@@ -15,7 +15,7 @@ void setup() {
 }
 
 void draw() {
-  background(255);
+  background(0);
   if (mousePressed) {
     Box box = new Box(mouseX, mouseY);
     boxes.add(box);
@@ -26,4 +26,5 @@ void draw() {
   }
 
   box2d.step();
+  saveFrame("./output/####.png");
 }
