@@ -26,5 +26,5 @@ void draw() {
   }
 
   box2d.step();
-  saveFrame("./output/####.png");
+  // saveFrame("./output/####.png");
 }
